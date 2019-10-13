@@ -43,23 +43,21 @@ jobs:
           failTaskOnFailedTests: true
           mergeTestResults: true
           testResultsFormat: "VSTest"
-          testResultsFiles: "**/TEST-*.trx"
+          testResultsFiles: "**/*.trx"
 
       - task: DotNetCoreCLI@2
         displayName: Package unstable
         inputs:
-          command: pack
-          configuration: release
-          arguments: --no-build -p:PackageVersion=$(Build.BuildNumber)-dev$(Build.BuildId) -o $(Build.ArtifactStagingDirectory)
+          command: custom
+          arguments: pack -c release --no-build -p:PackageVersion=$(Build.BuildNumber)-dev$(Build.BuildId) -o $(Build.ArtifactStagingDirectory)
           projects: |
             src/**/*.csproj
 
       - task: DotNetCoreCLI@2
         displayName: Package stable for Nuget
         inputs:
-          command: pack
-          configuration: release
-          arguments: --no-build -p:PackageVersion=$(Build.BuildNumber) -o $(Build.ArtifactStagingDirectory)
+          command: custom
+          arguments: pack -c release --no-build -p:PackageVersion=$(Build.BuildNumber) -o $(Build.ArtifactStagingDirectory)
           projects: |
             src/**/*.csproj
 
