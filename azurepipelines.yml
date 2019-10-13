@@ -27,7 +27,7 @@ jobs:
           configuration: debug
           publishTestResults: false
           restoreDirectory: $(Build.ArtifactStagingDirectory)
-          arguments: --no-restore --logger trx -p:AltCover=true -p:AltCoverShowSummary=true -p:AltCoverCobertura=$(Build.ArtifactStagingDirectory)\coverage.xml -p:AltCoverForce=true -p:AltCoverPathFilter=test
+          arguments: --no-restore --logger trx -p:AltCover=true -p:AltCoverShowSummary=true -p:AltCoverCobertura=coverage.xml -p:AltCoverForce=true -p:AltCoverPathFilter=test
           projects: |
             test/**/*.csproj
 
@@ -35,7 +35,7 @@ jobs:
         displayName: Publish code coverage results
         inputs:
           codeCoverageTool: "Cobertura"
-          summaryFileLocation: $(Build.ArtifactStagingDirectory)\coverage.xml
+          summaryFileLocation: "test/**/coverage.xml"
 
       - task: PublishTestResults@2
         displayName: Publish test results
@@ -43,6 +43,8 @@ jobs:
           searchFolder: $(Build.ArtifactStagingDirectory)
           failTaskOnFailedTests: true
           mergeTestResults: true
+          testResultsFormat: "VSTest"
+          testResultsFiles: "**/TEST-*.trx"
 
       - task: DotNetCoreCLI@2
         displayName: Package unstable
