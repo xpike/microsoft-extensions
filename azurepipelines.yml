@@ -26,8 +26,7 @@ jobs:
           command: test
           configuration: debug
           publishTestResults: false
-          restoreDirectory: $(Build.ArtifactStagingDirectory)
-          arguments: --no-restore --logger trx -p:AltCover=true -p:AltCoverShowSummary=true -p:AltCoverCobertura=coverage.xml -p:AltCoverForce=true -p:AltCoverPathFilter=test
+          arguments: --no-restore --logger trx -r $(Agent.TempDirectory)/TestResults -p:CollectCoverage=true -p:CoverletOutput="$(Agent.TempDirectory)/TestResults" -p:CoverletOutputFormat="json%2cCobertura" -p:MergeWith="$(Agent.TempDirectory)/TestResults/coverage.json" 
           projects: |
             test/**/*.csproj
 
@@ -35,12 +34,12 @@ jobs:
         displayName: Publish code coverage results
         inputs:
           codeCoverageTool: "Cobertura"
-          summaryFileLocation: "test/**/coverage.xml"
+          summaryFileLocation: "$(Agent.TempDirectory)/TestResults/coverage.cobertura.xml"
 
       - task: PublishTestResults@2
         displayName: Publish test results
         inputs:
-          searchFolder: $(Build.ArtifactStagingDirectory)
+          searchFolder: $(Agent.TempDirectory)/TestResults
           failTaskOnFailedTests: true
           mergeTestResults: true
           testResultsFormat: "VSTest"
