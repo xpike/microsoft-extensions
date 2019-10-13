@@ -15,8 +15,7 @@ jobs:
         displayName: Build
         inputs:
           command: build
-          configuration: release
-          arguments: --no-restore -p:Version=$(Build.BuildNumber).$(Build.BuildId)
+          arguments: --no-restore -c release -p:Version=$(Build.BuildNumber).$(Build.BuildId)
           projects: |
             src/**/*.csproj
 
@@ -24,9 +23,8 @@ jobs:
         displayName: Test
         inputs:
           command: test
-          configuration: debug
           publishTestResults: false
-          arguments: --no-restore --logger trx -r $(Agent.TempDirectory)/TestResults -p:CollectCoverage=true -p:CoverletOutput="$(Agent.TempDirectory)/TestResults/" -p:CoverletOutputFormat="json%2cCobertura" -p:MergeWith="$(Agent.TempDirectory)/TestResults/coverage.json" 
+          arguments: --no-restore -c debug --logger trx -r $(Agent.TempDirectory)/TestResults -p:CollectCoverage=true -p:CoverletOutput="$(Agent.TempDirectory)/TestResults/" -p:CoverletOutputFormat="json%2cCobertura" -p:MergeWith="$(Agent.TempDirectory)/TestResults/coverage.json" 
           projects: |
             test/**/*.csproj
 
