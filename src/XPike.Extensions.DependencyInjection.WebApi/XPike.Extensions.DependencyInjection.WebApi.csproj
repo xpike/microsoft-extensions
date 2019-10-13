@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="../../common.build.props"/>
+  <PropertyGroup>
+    <TargetFramework>net461</TargetFramework>
+    <Description>
+      Extensions to enhance the features and functionality of Microsoft.Extensions.DependencyInjection,
+      such as the ability to verify the container.
+    </Description>
+    <PackageTags>DI IoC DependencyInjection WebAPI</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNet.WebApi.Core" Version="5.2.7" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.1.0" />
+  </ItemGroup>
+
+</Project>

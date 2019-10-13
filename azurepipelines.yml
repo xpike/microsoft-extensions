@@ -1,0 +1,48 @@
+name: 1.0.$(Rev:r)-$(Build.BuildId)
+jobs:
+  - job:
+    steps:
+      - task: DotNetCoreCLI@2
+        displayName: Restore
+        inputs:
+          command: restore
+          projects: |
+            **/*.csproj
+
+      - task: DotNetCoreCLI@2
+        displayName: Build
+        inputs:
+          command: build
+          arguments: --no-restore -p:Version=$(Build.BuildNumber).$(Build.BuildId)
+          projects: |
+            **/*.csproj
+
+      - task: DotNetCoreCLI@2
+        displayName: Test
+        inputs:
+          command: test
+          arguments: --no-build
+          projects: |
+            test/**/*.csproj
+
+      - task: DotNetCoreCLI@2
+        displayName: Package unstable
+        inputs:
+          command: pack
+          arguments: --no-build -p:PackageVersion=$(Build.BuildNumber)-unstable$(Build.BuildId) -o $(Build.ArtifactStagingDirectory)
+          projects: |
+            src/**/*.csproj
+
+      - task: DotNetCoreCLI@2
+        displayName: Package stable for Nuget
+        inputs:
+          command: pack
+          arguments: --no-build -p:PackageVersion=$(Build.BuildNumber) -o $(Build.ArtifactStagingDirectory)
+          projects: |
+            src/**/*.csproj
+
+      - task: PublishBuildArtifacts@1
+        displayName: Publish Build Artifact
+
+    
+      

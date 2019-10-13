@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="../../common.build.props"/>
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0;net461</TargetFrameworks>
+    <Description>
+      Extensions to enhance the features and functionality of Microsoft.Extensions.DependencyInjection, 
+      such as the ability to verify the container.
+    </Description>
+    <PackageTags>DI IoC DependencyInjection AspNetCore</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.1.0" />
+  </ItemGroup>
+</Project>
