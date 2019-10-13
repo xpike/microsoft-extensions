@@ -35,7 +35,7 @@ jobs:
         displayName: Publish code coverage results
         inputs:
           codeCoverageTool: "Cobertura"
-          summaryFileLocation: $(Build.ArtifactStagingDirectory)
+          summaryFileLocation: $(Build.ArtifactStagingDirectory)\coverage.xml
 
       - task: PublishTestResults@2
         displayName: Publish test results
