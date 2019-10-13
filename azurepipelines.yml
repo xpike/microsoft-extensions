@@ -49,7 +49,7 @@ jobs:
         displayName: Package unstable
         inputs:
           command: custom
-          arguments: pack -c release --no-build -p:PackageVersion=$(Build.BuildNumber)-dev$(Build.BuildId) -o $(Build.ArtifactStagingDirectory)
+          custom: pack -c release --no-build -p:PackageVersion=$(Build.BuildNumber)-dev$(Build.BuildId) -o $(Build.ArtifactStagingDirectory)
           projects: |
             src/**/*.csproj
 
@@ -57,7 +57,7 @@ jobs:
         displayName: Package stable for Nuget
         inputs:
           command: custom
-          arguments: pack -c release --no-build -p:PackageVersion=$(Build.BuildNumber) -o $(Build.ArtifactStagingDirectory)
+          custom: pack -c release --no-build -p:PackageVersion=$(Build.BuildNumber) -o $(Build.ArtifactStagingDirectory)
           projects: |
             src/**/*.csproj
 
