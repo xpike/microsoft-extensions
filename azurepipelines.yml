@@ -1,6 +1,8 @@
-name: 1.0.$(Rev:r)-$(Build.BuildId)
+name: 1.0.$(Rev:r)
 jobs:
   - job:
+    pool:
+      vmImage: windows-latest
     steps:
       - task: DotNetCoreCLI@2
         displayName: Restore
