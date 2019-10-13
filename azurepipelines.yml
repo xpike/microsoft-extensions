@@ -49,8 +49,7 @@ jobs:
         inputs:
           command: pack
           configuration: release
-          nobuild: true
-          arguments: -p:PackageVersion=$(Build.BuildNumber)-dev$(Build.BuildId) -o $(Build.ArtifactStagingDirectory)
+          arguments: --no-build -p:PackageVersion=$(Build.BuildNumber)-dev$(Build.BuildId) -o $(Build.ArtifactStagingDirectory)
           projects: |
             src/**/*.csproj
 
@@ -59,8 +58,7 @@ jobs:
         inputs:
           command: pack
           configuration: release
-          nobuild: true
-          arguments: -p:PackageVersion=$(Build.BuildNumber) -o $(Build.ArtifactStagingDirectory)
+          arguments: --no-build -p:PackageVersion=$(Build.BuildNumber) -o $(Build.ArtifactStagingDirectory)
           projects: |
             src/**/*.csproj
 

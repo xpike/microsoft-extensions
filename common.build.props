@@ -5,7 +5,7 @@
     <PackageIcon>xpike-pacakge-icon.png</PackageIcon>
   </PropertyGroup>
   <ItemGroup>
-    <None Include="..\xpike-pacakge-icon.png" Pack="true" PackagePath="\" />
+    <None Include="..\..\xpike-pacakge-icon.png" Pack="true" PackagePath="\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.9.6">
