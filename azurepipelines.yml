@@ -15,23 +15,42 @@ jobs:
         displayName: Build
         inputs:
           command: build
+          configuration: release
           arguments: --no-restore -p:Version=$(Build.BuildNumber).$(Build.BuildId)
           projects: |
-            **/*.csproj
+            src/**/*.csproj
 
       - task: DotNetCoreCLI@2
         displayName: Test
         inputs:
           command: test
-          arguments: --no-build
+          configuration: debug
+          publishTestResults: false
+          restoreDirectory: $(Build.ArtifactStagingDirectory)
+          arguments: --no-restore --logger trx -p:AltCover=true -p:AltCoverShowSummary=true -p:AltCoverCobertura=$(Build.ArtifactStagingDirectory)\coverage.xml -p:AltCoverForce=true -p:AltCoverPathFilter=test
           projects: |
             test/**/*.csproj
+
+      - task: PublishCodeCoverageResults@1
+        displayName: Publish code coverage results
+        inputs:
+          codeCoverageTool: "Cobertura"
+          summaryFileLocation: $(Build.ArtifactStagingDirectory)
+
+      - task: PublishTestResults@2
+        displayName: Publish test results
+        inputs:
+          searchFolder: $(Build.ArtifactStagingDirectory)
+          failTaskOnFailedTests: true
+          mergeTestResults: true
 
       - task: DotNetCoreCLI@2
         displayName: Package unstable
         inputs:
           command: pack
-          arguments: --no-build -p:PackageVersion=$(Build.BuildNumber)-unstable$(Build.BuildId) -o $(Build.ArtifactStagingDirectory)
+          configuration: release
+          nobuild: true
+          arguments: -p:PackageVersion=$(Build.BuildNumber)-dev$(Build.BuildId) -o $(Build.ArtifactStagingDirectory)
           projects: |
             src/**/*.csproj
 
@@ -39,7 +58,9 @@ jobs:
         displayName: Package stable for Nuget
         inputs:
           command: pack
-          arguments: --no-build -p:PackageVersion=$(Build.BuildNumber) -o $(Build.ArtifactStagingDirectory)
+          configuration: release
+          nobuild: true
+          arguments: -p:PackageVersion=$(Build.BuildNumber) -o $(Build.ArtifactStagingDirectory)
           projects: |
             src/**/*.csproj
 
