@@ -26,7 +26,7 @@ jobs:
           command: test
           configuration: debug
           publishTestResults: false
-          arguments: --no-restore --logger trx -r $(Agent.TempDirectory)/TestResults -p:CollectCoverage=true -p:CoverletOutput="$(Agent.TempDirectory)/TestResults" -p:CoverletOutputFormat="json%2cCobertura" -p:MergeWith="$(Agent.TempDirectory)/TestResults/coverage.json" 
+          arguments: --no-restore --logger trx -r $(Agent.TempDirectory)/TestResults -p:CollectCoverage=true -p:CoverletOutput="$(Agent.TempDirectory)/TestResults/" -p:CoverletOutputFormat="json%2cCobertura" -p:MergeWith="$(Agent.TempDirectory)/TestResults/coverage.json" 
           projects: |
             test/**/*.csproj
 
