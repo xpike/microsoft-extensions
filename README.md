@@ -1,5 +1,7 @@
 ﻿# XPike.Extensions.DependencyInjection
 
+[![Build Status](https://dev.azure.com/xpike/xpike/_apis/build/status/xpike-extensions?branchName=master)](https://dev.azure.com/xpike/xpike/_build/latest?definitionId=1&branchName=master)
+
 ## Introduction
 
 This library provides extensions/enhancements to

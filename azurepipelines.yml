@@ -63,6 +63,4 @@ jobs:
 
       - task: PublishBuildArtifacts@1
         displayName: Publish Build Artifact
-
-    
       
