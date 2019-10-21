@@ -6,10 +6,9 @@ namespace XPike.Extensions.DependencyInjection
     /// <summary>
     /// Encapsulates the result of a failed attempt to verify a registered type in the container.
     /// </summary>
+    [Serializable]
     public class VerificationResult
     {
-        private ServiceDescriptor descriptor;
-
         /// <summary>
         /// Initializes a new instance of the <see cref="VerificationResult"/> class.
         /// </summary>
@@ -19,7 +18,9 @@ namespace XPike.Extensions.DependencyInjection
         /// <exception cref="ArgumentNullException">descriptor</exception>
         public VerificationResult(ServiceDescriptor descriptor, Exception exception = null, string message = null)
         {
-            this.descriptor = descriptor ?? throw new ArgumentNullException(nameof(descriptor));
+            if (descriptor == null)
+                throw new ArgumentNullException(nameof(descriptor));
+
             this.Exception = exception;
             Message = message ?? $"Service type {descriptor.ServiceType} failed to resolve. See the related Exception for more details.";
         }

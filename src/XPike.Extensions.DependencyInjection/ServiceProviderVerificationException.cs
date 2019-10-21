@@ -19,14 +19,14 @@ namespace XPike.Extensions.DependencyInjection
         public ServiceProviderVerificationException(IEnumerable<VerificationResult> results)
             : base ("The container failed to validate all required dependencies. You are likely missing a registration. See the Restults collection for details.")
         {
-            Restults = results.ToArray();
+            Results = results.ToArray();
         }
 
         /// <summary>
         /// Gets a list of <see cref="VerificationResult"/>s that occurred during verification.
         /// </summary>
         /// <value>An array of exceptions.</value>
-        public IEnumerable<VerificationResult> Restults { get; }
+        public IEnumerable<VerificationResult> Results { get; }
         
         /// <summary>
         /// Initializes a new instance of the <see cref="ServiceProviderVerificationException"/> class.
@@ -36,7 +36,24 @@ namespace XPike.Extensions.DependencyInjection
         /// <exception cref="System.NotImplementedException"></exception>
         protected ServiceProviderVerificationException(System.Runtime.Serialization.SerializationInfo serializationInfo, System.Runtime.Serialization.StreamingContext streamingContext)
         {
-            throw new NotImplementedException();
+            this.Results = (IEnumerable<VerificationResult>)serializationInfo.GetValue("Results", typeof(IEnumerable<VerificationResult>));
+        
+        }
+
+        /// <summary>
+        /// When overridden in a derived class, sets the <see cref="T:System.Runtime.Serialization.SerializationInfo"></see> with information about the exception.
+        /// </summary>
+        /// <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo"></see> that holds the serialized object data about the exception being thrown.</param>
+        /// <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext"></see> that contains contextual information about the source or destination.</param>
+        /// <exception cref="System.ArgumentNullException">info</exception>
+        public override void GetObjectData(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context)
+        {
+            if (info == null)
+                throw new ArgumentNullException(nameof(info));
+
+            info.AddValue("Results", this.Results, typeof(IEnumerable<VerificationResult>));
+
+            base.GetObjectData(info, context);
         }
     }
 }
