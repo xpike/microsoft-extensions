@@ -1,4 +1,20 @@
 name: 1.0.$(Rev:r)
+trigger:
+  batch: true
+  branches:
+    include:
+      - master
+  paths:
+    include:
+      - src
+pr:
+  branches:
+    include:
+      - master
+  paths:
+    include:
+      - src
+      - test
 jobs:
   - job:
     pool:
@@ -15,7 +31,7 @@ jobs:
         displayName: Build
         inputs:
           command: build
-          arguments: --no-restore -c release -p:Version=$(Build.BuildNumber).$(Build.BuildId)
+          arguments: --no-restore -c release -p:Version=$(Build.BuildNumber).0
           projects: |
             src/**/*.csproj
 
@@ -48,7 +64,7 @@ jobs:
         inputs:
           command: custom
           custom: pack
-          arguments: -c release --no-build -p:PackageVersion=$(Build.BuildNumber)-dev$(Build.BuildId) -o $(Build.ArtifactStagingDirectory)
+          arguments: -c release --no-build -p:PackageVersion=$(Build.BuildNumber)-dev -o $(Build.ArtifactStagingDirectory)
           projects: |
             src/**/*.csproj
 
