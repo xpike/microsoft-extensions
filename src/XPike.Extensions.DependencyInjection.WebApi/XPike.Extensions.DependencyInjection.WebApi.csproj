@@ -3,8 +3,7 @@
   <PropertyGroup>
     <TargetFramework>net461</TargetFramework>
     <Description>
-      Extensions to enhance the features and functionality of Microsoft.Extensions.DependencyInjection,
-      such as the ability to verify the container.
+      Provides support for using Microsoft.Extensions.DependencyInjection in legacy ASP.Net WebAPI applications.
     </Description>
     <PackageTags>DI IoC DependencyInjection WebAPI</PackageTags>
   </PropertyGroup>

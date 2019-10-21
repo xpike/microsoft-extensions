@@ -1,15 +1,23 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26124.0
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29411.108
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XPike.Extensions.DependencyInjection", "XPike.Extensions.DependencyInjection\XPike.Extensions.DependencyInjection.csproj", "{2EE1E81F-C718-4BBA-AA59-C685F42020A4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XPike.Extensions.DependencyInjection", "XPike.Extensions.DependencyInjection\XPike.Extensions.DependencyInjection.csproj", "{2EE1E81F-C718-4BBA-AA59-C685F42020A4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XPike.Extensions.DependencyInjection.WebApi", "XPike.Extensions.DependencyInjection.WebApi\XPike.Extensions.DependencyInjection.WebApi.csproj", "{0D87CBF0-650A-4948-AA0E-59007584F07A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XPike.Extensions.DependencyInjection.WebApi", "XPike.Extensions.DependencyInjection.WebApi\XPike.Extensions.DependencyInjection.WebApi.csproj", "{0D87CBF0-650A-4948-AA0E-59007584F07A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XPike.Extensions.DependencyInjection.Tests", "..\test\XPike.Extensions.DependencyInjection.Tests\XPike.Extensions.DependencyInjection.Tests.csproj", "{BB3DDEB2-568C-4055-8281-BCBAF25424E1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XPike.Extensions.DependencyInjection.Tests", "..\test\XPike.Extensions.DependencyInjection.Tests\XPike.Extensions.DependencyInjection.Tests.csproj", "{BB3DDEB2-568C-4055-8281-BCBAF25424E1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XPike.Extensions.DependencyInjection.WebApi.Tests", "..\test\XPike.Extensions.DependencyInjection.WebApi.Tests\XPike.Extensions.DependencyInjection.WebApi.Tests.csproj", "{F4949C31-97C9-4F79-B2D3-153DE82076E0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XPike.Extensions.DependencyInjection.WebApi.Tests", "..\test\XPike.Extensions.DependencyInjection.WebApi.Tests\XPike.Extensions.DependencyInjection.WebApi.Tests.csproj", "{F4949C31-97C9-4F79-B2D3-153DE82076E0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{75AD555E-D159-4EAF-97A9-26577DDF091C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XPike.Extensions.DependencyInjection.Owin", "XPike.Extensions.DependencyInjection.Owin\XPike.Extensions.DependencyInjection.Owin.csproj", "{67BE18B8-0CC8-4E25-8F6B-4140B5DF84D4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "examples", "examples", "{B85D776E-1AAC-4402-805C-D9805D4C51E9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OwinExample", "..\examples\OwinExample\OwinExample.csproj", "{353A98EA-42D4-4FCB-904A-22BA29D5592F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,9 +27,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{2EE1E81F-C718-4BBA-AA59-C685F42020A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -72,5 +77,40 @@ Global
 		{F4949C31-97C9-4F79-B2D3-153DE82076E0}.Release|x64.Build.0 = Debug|Any CPU
 		{F4949C31-97C9-4F79-B2D3-153DE82076E0}.Release|x86.ActiveCfg = Debug|Any CPU
 		{F4949C31-97C9-4F79-B2D3-153DE82076E0}.Release|x86.Build.0 = Debug|Any CPU
+		{67BE18B8-0CC8-4E25-8F6B-4140B5DF84D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67BE18B8-0CC8-4E25-8F6B-4140B5DF84D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67BE18B8-0CC8-4E25-8F6B-4140B5DF84D4}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{67BE18B8-0CC8-4E25-8F6B-4140B5DF84D4}.Debug|x64.Build.0 = Debug|Any CPU
+		{67BE18B8-0CC8-4E25-8F6B-4140B5DF84D4}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{67BE18B8-0CC8-4E25-8F6B-4140B5DF84D4}.Debug|x86.Build.0 = Debug|Any CPU
+		{67BE18B8-0CC8-4E25-8F6B-4140B5DF84D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67BE18B8-0CC8-4E25-8F6B-4140B5DF84D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67BE18B8-0CC8-4E25-8F6B-4140B5DF84D4}.Release|x64.ActiveCfg = Release|Any CPU
+		{67BE18B8-0CC8-4E25-8F6B-4140B5DF84D4}.Release|x64.Build.0 = Release|Any CPU
+		{67BE18B8-0CC8-4E25-8F6B-4140B5DF84D4}.Release|x86.ActiveCfg = Release|Any CPU
+		{67BE18B8-0CC8-4E25-8F6B-4140B5DF84D4}.Release|x86.Build.0 = Release|Any CPU
+		{353A98EA-42D4-4FCB-904A-22BA29D5592F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{353A98EA-42D4-4FCB-904A-22BA29D5592F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{353A98EA-42D4-4FCB-904A-22BA29D5592F}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{353A98EA-42D4-4FCB-904A-22BA29D5592F}.Debug|x64.Build.0 = Debug|Any CPU
+		{353A98EA-42D4-4FCB-904A-22BA29D5592F}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{353A98EA-42D4-4FCB-904A-22BA29D5592F}.Debug|x86.Build.0 = Debug|Any CPU
+		{353A98EA-42D4-4FCB-904A-22BA29D5592F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{353A98EA-42D4-4FCB-904A-22BA29D5592F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{353A98EA-42D4-4FCB-904A-22BA29D5592F}.Release|x64.ActiveCfg = Release|Any CPU
+		{353A98EA-42D4-4FCB-904A-22BA29D5592F}.Release|x64.Build.0 = Release|Any CPU
+		{353A98EA-42D4-4FCB-904A-22BA29D5592F}.Release|x86.ActiveCfg = Release|Any CPU
+		{353A98EA-42D4-4FCB-904A-22BA29D5592F}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{BB3DDEB2-568C-4055-8281-BCBAF25424E1} = {75AD555E-D159-4EAF-97A9-26577DDF091C}
+		{F4949C31-97C9-4F79-B2D3-153DE82076E0} = {75AD555E-D159-4EAF-97A9-26577DDF091C}
+		{353A98EA-42D4-4FCB-904A-22BA29D5592F} = {B85D776E-1AAC-4402-805C-D9805D4C51E9}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {44639024-170D-4268-A9B3-2B3736DF0064}
 	EndGlobalSection
 EndGlobal
